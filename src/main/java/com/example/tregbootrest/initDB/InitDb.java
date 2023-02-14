@@ -8,7 +8,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -23,7 +23,7 @@ public class InitDb {
     }
 
     @PostConstruct
-    public void postConstruct() {
+    public void postConstruct() throws IOException {
         List<User> users = userService.getAllUsers();
         if (users.isEmpty()) {
             Car VWCar = new Car("VW", "POLO");

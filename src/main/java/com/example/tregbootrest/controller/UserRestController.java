@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RequestMapping("/api/users")
@@ -27,7 +28,7 @@ public class UserRestController {
     }
 
     @GetMapping("/")
-    public List<User> showAllUsers (){
+    public List<User> showAllUsers () throws IOException {
         return  userService.getAllUsers();
     }
 
@@ -51,7 +52,7 @@ public class UserRestController {
 
     @PutMapping("/")
     public User updateUser (@RequestBody User user){
-        user.addCarToUser(new Car("test", "test"));
+       // user.addCarToUser(new Car("test", "test"));
         userService.createUser(user);
         return user;
     }
